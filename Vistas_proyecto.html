@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navitalleres - Parroquia San Martín de Porres</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600&family=Mate+SC&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            /* Paleta del segundo cartel - Morados y dorados intensos */
+            --ink-purple: #2c0056;
+            /* Morado oscuro principal */
+            --purple-medium: #4B0082;
+            /* Morado intermedio */
+            --purple-light: #663399;
+            /* Morado claro */
+            --ink-gold: #FFD700;
+            /* Dorado brillante */
+            --gold-dark: #D4AF37;
+            /* Dorado oscuro */
+            --highlight-pink: #be185d;
+            --paper-base: #fdfbf7;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f8f5ff;
+            /* Fondo del segundo cartel */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #2c0056;
+            /* Color de texto del segundo cartel */
+        }
+
+        /* --- Lienzo A4 --- */
+        .poster-sheet {
+            width: 210mm;
+            background-color: var(--paper-base);
+            position: relative;
+            box-shadow: 0 20px 40px rgba(44, 0, 86, 0.2);
+            /* Sombra con tono morado */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), rgba(255, 250, 240, 0.5));
+        }
+
+        /* --- Tipografías --- */
+        .font-decor {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+        }
+
+        .font-title {
+            font-family: 'Cinzel', serif;
+        }
+
+        .font-serif-alt {
+            font-family: 'Mate SC', serif;
+        }
+
+        /* --- Marco Doble --- */
+        .double-border {
+            position: absolute;
+            inset: 15px;
+            border: 5px double var(--ink-purple);
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .corner-accent {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--ink-gold);
+            z-index: 51;
+        }
+
+        .c-tl {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .c-tr {
+            top: 10px;
+            right: 10px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .c-bl {
+            bottom: 10px;
+            left: 10px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .c-br {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* --- Encabezado --- */
+        .header-section {
+            padding-top: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(to right, var(--purple-medium), var(--purple-light));
+            color: white;
+            padding-bottom: 30px;
+        }
+
+        /* Corona de Adviento Minimalista (Vectorial CSS) - Adaptada a nuevos colores */
+        .advent-wreath-abstract {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .candle-stick {
+            width: 18px;
+            border: 1px solid var(--ink-gold);
+            background: white;
+            position: relative;
+        }
+
+        .candle-stick::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            opacity: 0.8;
+        }
+
+        .c-p::after {
+            background-color: var(--purple-light);
+        }
+
+        .c-pi::after {
+            background-color: var(--highlight-pink);
+        }
+
+        .flame-styled {
+            width: 10px;
+            height: 18px;
+            border: 2px solid var(--ink-gold);
+            border-radius: 50% 0 50% 50%;
+            transform: rotate(-45deg) translateX(50%);
+            position: absolute;
+            top: -22px;
+            left: 2px;
+            background: transparent;
+        }
+
+        /* --- Grid de Talleres (Arcos) --- */
+        .workshop-arch-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            padding: 20px 50px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .arch-card {
+            border: 1px solid #eae0ff;
+            border-top: 30px solid transparent;
+            position: relative;
+            text-align: center;
+            padding: 15px 10px;
+            background: rgba(249, 247, 255, 0.9);
+            /* Fondo del segundo cartel */
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .arch-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(75, 0, 130, 0.1);
+        }
+
+        .arch-card::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -1px;
+            right: -1px;
+            height: 40px;
+            border: 1px solid var(--purple-medium);
+            border-bottom: none;
+            border-radius: 50px 50px 0 0;
+            background: transparent;
+        }
+
+        .arch-icon {
+            width: 40px;
+            height: 40px;
+            margin: -35px auto 10px auto;
+            background: white;
+            border: 1px solid var(--ink-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--purple-medium);
+            position: relative;
+            z-index: 10;
+            font-size: 1.1rem;
+        }
+
+        /* --- Nacimiento Line-Art (Footer) --- */
+        .nativity-lineart {
+            margin-top: auto;
+            position: relative;
+            height: 180px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: var(--ink-purple);
+        }
+
+        /* Cinta de Información */
+        .info-ribbon {
+            border-top: 2px solid var(--ink-gold);
+            border-bottom: 2px solid var(--ink-gold);
+            padding: 10px 0;
+            margin: 0 40px 10px 40px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--ink-purple);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Decoraciones sutiles del segundo cartel */
+        .decoration {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+
+        .dec-1 {
+            top: 15%;
+            left: 5%;
+            font-size: 8rem;
+            color: var(--purple-medium);
+        }
+
+        .dec-2 {
+            bottom: 20%;
+            right: 5%;
+            font-size: 6rem;
+            color: var(--ink-gold);
+            transform: rotate(15deg);
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Imágenes de San Martín */
+        .imagen-san-martin {
+            position: absolute;
+            width: 90px;
+            z-index: 60;
+        }
+
+        .imagen-left {
+            top: 20px;
+            left: 20px;
+        }
+
+        .imagen-right {
+            top: 20px;
+            right: 20px;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .poster-sheet {
+                width: 100%;
+                height: 100%;
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="poster-sheet">
+
+        <!-- Decoraciones sutiles del segundo cartel -->
+        <div class="decoration dec-1"><i class="fas fa-cross"></i></div>
+        <div class="decoration dec-2"><i class="fas fa-star-of-david"></i></div>
+
+        <!-- Bordes Decorativos del primer cartel -->
+        <div class="double-border"></div>
+        <div class="corner-accent c-tl"></div>
+        <div class="corner-accent c-tr"></div>
+        <div class="corner-accent c-bl"></div>
+        <div class="corner-accent c-br"></div>
+
+        <!-- Imágenes de San Martín -->
+        <img class="imagen-san-martin imagen-left" src="./SM.png" alt="San Martín de Porres">
+        <img class="imagen-san-martin imagen-right" src="./SM.png" alt="San Martín de Porres">
+
+        <!-- ENCABEZADO -->
+        <header class="header-section">
+
+            <!-- Corona de Adviento Simbólica y Elegante -->
+            <div class="advent-wreath-abstract">
+                <div class="candle-stick c-p h-12">
+                    <div class="flame-styled"></div>
+                </div>
+                <div class="candle-stick c-p h-16">
+                    <div class="flame-styled"></div>
+                </div>
+                <div class="candle-stick c-pi h-20">
+                    <div class="flame-styled"></div>
+                </div>
+                <div class="candle-stick c-p h-14">
+                    <div class="flame-styled"></div>
+                </div>
+            </div>
+
+            <h3 class="font-serif-alt text-lg text-gray-200 tracking-widest uppercase mb-1">Parroquia San Martín de
+                Porres</h3>
+
+            <div class="relative inline-block px-8">
+                <h1 class="font-decor text-6xl text-white leading-none"
+                    style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                    NAVITALLERES
+                </h1>
+                <div class="h-1 w-32  mx-auto mt-2 mb-1"></div>
+                <p class="font-title text-lg font-bold text-yellow-300 tracking-[0.5em] uppercase">con San Martín</p>
+            </div>
+
+            <p class="mt-6 mx-auto max-w-md font-serif-alt italic text-gray-200 text-lg">
+                Ven a preparar tu corazón para la Navidad con actividades para toda la familia
+            </p>
+        </header>
+
+        <!-- CUERPO: TALLERES EN ARCOS -->
+<main class="flex-grow content-container">
+    <!-- Cinta Informativa MÁS GRUESA -->
+    <div class="info-ribbon mt-10">
+        <div class="flex flex-col items-center">
+            <i class="far fa-calendar-alt mb-2 text-yellow-600 text-2xl"></i>
+            <span class="font-bold uppercase text-sm">Fechas: 8 al 23 Dic</span>
+        </div>
+        <div class="h-10 w-1 bg-yellow-600/50"></div>
+        <div class="flex flex-col items-center">
+            <i class="far fa-clock mb-2 text-yellow-600 text-2xl"></i>
+            <span class="font-bold uppercase text-sm">Horario: -</span>
+        </div>
+        <div class="h-10 w-1 bg-yellow-600/50"></div>
+        <div class="flex flex-col items-center">
+            <i class="fab fa-whatsapp mb-2 text-yellow-600 text-2xl"></i>
+            <span class="font-bold uppercase text-sm">72576142</span>
+        </div>
+    </div>
+
+    <h2 class="font-decor text-4xl text-center text-purple-800 mt-12 mb-10 relative">
+        Nuestros Talleres
+        <div class="h-2 w-32 bg-yellow-400 mx-auto mt-4"></div>
+    </h2>
+
+    <div class="workshop-arch-grid">
+
+        <!-- Coro -->
+        <div class="arch-card">
+            <div class="arch-icon"><i class="fas fa-music"></i></div>
+            <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Coro</h4>
+            <p class="font-serif-alt text-base text-gray-700 font-bold">De 10 años en adelante</p>
+        </div>
+
+        <!-- Danza -->
+        <div class="arch-card">
+            <div class="arch-icon"><i class="fas fa-heart"></i></div>
+            <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Danza</h4>
+            <p class="font-serif-alt text-base text-gray-700 font-bold">De 10 años en adelante</p>
+        </div>
+
+        <!-- Manualidades -->
+        <div class="arch-card">
+            <div class="arch-icon"><i class="fas fa-hands"></i></div>
+            <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Manualidades</h4>
+            <p class="font-serif-alt text-base text-gray-700 font-bold">De 8 años en adelante</p>
+        </div>
+
+        <!-- Dibujo -->
+        <div class="arch-card">
+            <div class="arch-icon"><i class="fas fa-paint-brush"></i></div>
+            <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Dibujo y Pintura</h4>
+            <p class="font-serif-alt text-base text-gray-700 font-bold">De 8 años en adelante</p>
+        </div>
+
+        <!-- Reciclaje -->
+        <div class="arch-card">
+            <div class="arch-icon"><i class="fas fa-recycle"></i></div>
+            <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Reciclaje</h4>
+            <p class="font-serif-alt text-base text-gray-700 font-bold">De 12 años en adelante</p>
+        </div>
+
+        <!-- Deporte -->
+        <div class="arch-card">
+            <div class="arch-icon"><i class="fas fa-futbol"></i></div>
+            <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Deporte</h4>
+            <p class="font-serif-alt text-base text-gray-700 font-bold">De 7 a 13 años</p>
+        </div>
+
+    </div>
+</main>
+
+
+        <!-- FOOTER INTEGRADO -->
+        <footer class="relative z-20 pb-8 text-center" style="background: #2c0056; color: white;">
+
+            <!-- Escena Lineal del Nacimiento (Arte SVG limpio) -->
+            <div class="relative h-32 w-full flex justify-center items-end opacity-90 mt-6">
+                <!-- Estrella central -->
+                <div class="absolute top-0 text-yellow-400 text-2xl">
+                    <i class="fas fa-star-of-life"></i>
+                </div>
+
+                <svg viewBox="0 0 400 120" class="w-full max-w-lg h-full fill-none stroke-current text-yellow-300"
+                    stroke-width="1.5" stroke-linecap="round">
+                    <!-- Suelo ondulado -->
+                    <path d="M0 110 Q100 100 200 110 T400 110" stroke-opacity="0.5" />
+
+                    <!-- Establo simple -->
+                    <path d="M130 110 L130 50 L200 20 L270 50 L270 110" />
+                    <path d="M145 50 L255 50" stroke-opacity="0.3" /> <!-- Viga -->
+
+                    <!-- José -->
+                    <path d="M160 110 L160 70 Q160 60 170 60 Q180 60 180 70 L180 110" fill="white" />
+                    <circle cx="170" cy="55" r="5" fill="white" stroke="currentColor" />
+
+                    <!-- María -->
+                    <path d="M240 110 L240 80 Q240 70 230 70 Q220 70 220 80 L220 110" fill="white" />
+                    <circle cx="230" cy="65" r="5" fill="white" stroke="currentColor" />
+
+                    <!-- Pesebre -->
+                    <path d="M190 90 L210 90 L205 100 L195 100 Z" fill="white" />
+                    <circle cx="200" cy="85" r="6" fill="white" stroke="#FFD700" /> <!-- Niño (Dorado) -->
+
+                    <!-- Rayos de luz -->
+                    <line x1="200" y1="30" x2="200" y2="45" stroke="#FFD700" stroke-dasharray="2 2" />
+                    <line x1="200" y1="30" x2="185" y2="40" stroke="#FFD700" stroke-dasharray="2 2" />
+                    <line x1="200" y1="30" x2="215" y2="40" stroke="#FFD700" stroke-dasharray="2 2" />
+                </svg>
+            </div>
+
+            <div class="mt-6">
+                <div class="contact-item inline-block mx-4 text-lg">
+                    <i class="fas fa-phone text-yellow-300 mr-2"></i> 72576142
+                </div>
+                <div class="contact-item inline-block mx-4 text-lg">
+                    <i class="far fa-calendar-check text-yellow-300 mr-2"></i> Inscripciones hasta el
+                </div>
+            </div>
+
+            <div class="text-lg italic text-yellow-300 mt-6 mx-auto max-w-xl border-t border-yellow-300/30 pt-4">
+                "Preparamos nuestros corazones para la venida del Salvador"
+                <div class="text-sm mt-2 text-gray-300">
+                    Organizado por la Comunidad Parroquial San Martín de Porres
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
