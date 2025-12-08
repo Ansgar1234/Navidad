@@ -298,6 +298,65 @@
             right: 20px;
         }
 
+        /* Sección de dirección compacta */
+        .address-section {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid var(--ink-gold);
+            border-radius: 6px;
+            padding: 8px 15px;
+            margin: 10px 40px 15px 40px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .address-icon {
+            color: var(--ink-purple);
+            font-size: 1rem;
+        }
+
+        .address-text {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            color: var(--ink-purple);
+            font-weight: 600;
+        }
+
+        /* Precio en el footer (a ambos lados) */
+        .price-footer {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, var(--ink-gold), var(--gold-dark));
+            color: var(--ink-purple);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 900;
+            font-size: 1.4rem;
+            z-index: 70;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .price-left {
+            left: 40px;
+        }
+
+        .price-right {
+            right: 40px;
+        }
+
+        .price-icon {
+            font-size: 1rem;
+        }
+
         @media print {
             body {
                 background: none;
@@ -368,78 +427,99 @@
                 <div class="h-1 w-32  mx-auto mt-2 mb-1"></div>
                 <p class="font-title text-lg font-bold text-yellow-300 tracking-[0.5em] uppercase">con San Martín</p>
             </div>
+
+            <p class="mt-6 mx-auto max-w-md font-serif-alt italic text-gray-200 text-lg">
+                Ven a preparar tu corazón para la Navidad
+            </p>
         </header>
 
         <!-- CUERPO: TALLERES EN ARCOS -->
-<main class="flex-grow content-container">
-    <!-- Cinta Informativa MÁS GRUESA -->
-    <div class="info-ribbon mt-10">
-        <div class="flex flex-col items-center">
-            <i class="far fa-calendar-alt mb-2 text-yellow-600 text-2xl"></i>
-            <span class="font-bold uppercase text-sm">Fechas: 8 al 23 Dic</span>
-        </div>
-        <div class="h-10 w-1 bg-yellow-600/50"></div>
-        <div class="flex flex-col items-center">
-            <i class="far fa-clock mb-2 text-yellow-600 text-2xl"></i>
-            <span class="font-bold uppercase text-sm">Horario: -</span>
-        </div>
-        <div class="h-10 w-1 bg-yellow-600/50"></div>
-        <div class="flex flex-col items-center">
-            <i class="fab fa-whatsapp mb-2 text-yellow-600 text-2xl"></i>
-            <span class="font-bold uppercase text-sm">72576142</span>
-        </div>
-    </div>
+        <main class="flex-grow content-container">
+            <!-- Cinta Informativa MÁS GRUESA -->
+            <div class="info-ribbon mt-10">
+                <div class="flex flex-col items-center">
+                    <i class="far fa-calendar-alt mb-2 text-yellow-600 text-2xl"></i>
+                    <span class="font-bold uppercase text-sm">Fechas: 8 al 23 Dic</span>
+                </div>
+                <div class="h-10 w-1 bg-yellow-600/50"></div>
+                <div class="flex flex-col items-center">
+                    <i class="far fa-clock mb-2 text-yellow-600 text-2xl"></i>
+                    <span class="font-bold uppercase text-sm">Horario: 14:30 - 17:30</span>
+                </div>
+                <div class="h-10 w-1 bg-yellow-600/50"></div>
+                <div class="flex flex-col items-center">
+                    <i class="fab fa-whatsapp mb-2 text-yellow-600 text-2xl"></i>
+                    <span class="font-bold uppercase text-sm">72576142</span>
+                </div>
+            </div>
 
-    <div class="workshop-arch-grid">
+            <!-- Sección de Dirección compacta -->
+            <div class="address-section">
+                <i class="fas fa-map-marker-alt address-icon"></i>
+                <span class="address-text">Parroquia San Martín de Porres - Calle Jorge Zapata al lado del Regimiento 5</span>
+            </div>
 
-        <!-- Coro -->
-        <div class="arch-card">
-            <div class="arch-icon"><i class="fas fa-music"></i></div>
-            <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Coro</h4>
-            <p class="font-serif-alt text-base text-gray-700 font-bold">De 10 años en adelante</p>
-        </div>
+            <div class="workshop-arch-grid">
 
-        <!-- Danza -->
-        <div class="arch-card">
-            <div class="arch-icon"><i class="fas fa-heart"></i></div>
-            <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Danza</h4>
-            <p class="font-serif-alt text-base text-gray-700 font-bold">De 10 años en adelante</p>
-        </div>
+                <!-- Coro -->
+                <div class="arch-card">
+                    <div class="arch-icon"><i class="fas fa-music"></i></div>
+                    <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Coro</h4>
+                    <p class="font-serif-alt text-base text-gray-700 font-bold">De 10 años en adelante</p>
+                </div>
 
-        <!-- Manualidades -->
-        <div class="arch-card">
-            <div class="arch-icon"><i class="fas fa-hands"></i></div>
-            <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Manualidades</h4>
-            <p class="font-serif-alt text-base text-gray-700 font-bold">De 8 años en adelante</p>
-        </div>
+                <!-- Danza -->
+                <div class="arch-card">
+                    <div class="arch-icon"><i class="fas fa-heart"></i></div>
+                    <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Danza</h4>
+                    <p class="font-serif-alt text-base text-gray-700 font-bold">De 8 años en adelante</p>
+                </div>
 
-        <!-- Dibujo -->
-        <div class="arch-card">
-            <div class="arch-icon"><i class="fas fa-paint-brush"></i></div>
-            <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Dibujo y Pintura</h4>
-            <p class="font-serif-alt text-base text-gray-700 font-bold">De 8 años en adelante</p>
-        </div>
+                <!-- Manualidades -->
+                <div class="arch-card">
+                    <div class="arch-icon"><i class="fas fa-hands"></i></div>
+                    <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Manualidades</h4>
+                    <p class="font-serif-alt text-base text-gray-700 font-bold">De 8 años en adelante</p>
+                </div>
 
-        <!-- Reciclaje -->
-        <div class="arch-card">
-            <div class="arch-icon"><i class="fas fa-recycle"></i></div>
-            <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Reciclaje</h4>
-            <p class="font-serif-alt text-base text-gray-700 font-bold">De 12 años en adelante</p>
-        </div>
+                <!-- Dibujo -->
+                <div class="arch-card">
+                    <div class="arch-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Dibujo y Pintura</h4>
+                    <p class="font-serif-alt text-base text-gray-700 font-bold">De 8 años en adelante</p>
+                </div>
 
-        <!-- Deporte -->
-        <div class="arch-card">
-            <div class="arch-icon"><i class="fas fa-futbol"></i></div>
-            <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Deporte</h4>
-            <p class="font-serif-alt text-base text-gray-700 font-bold">De 7 a 13 años</p>
-        </div>
+                <!-- Reciclaje -->
+                <div class="arch-card">
+                    <div class="arch-icon"><i class="fas fa-recycle"></i></div>
+                    <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Reciclaje</h4>
+                    <p class="font-serif-alt text-base text-gray-700 font-bold">De 12 años en adelante</p>
+                </div>
 
-    </div>
-</main>
+                <!-- Deporte -->
+                <div class="arch-card">
+                    <div class="arch-icon"><i class="fas fa-futbol"></i></div>
+                    <h4 class="font-title font-bold text-purple-900 text-xl uppercase mb-2">Deporte</h4>
+                    <p class="font-serif-alt text-base text-gray-700 font-bold">De 7 a 13 años</p>
+                </div>
+
+            </div>
+        </main>
 
 
         <!-- FOOTER INTEGRADO -->
         <footer class="relative z-20 pb-8 text-center" style="background: #2c0056; color: white;">
+
+            <!-- Precios en ambos lados del footer -->
+            <div class="price-footer price-left">
+                <i class="fas fa-tag price-icon"></i>
+                <span>10Bs.</span>
+            </div>
+
+            <div class="price-footer price-right">
+                <i class="fas fa-tag price-icon"></i>
+                <span>10Bs.</span>
+            </div>
 
             <!-- Escena Lineal del Nacimiento (Arte SVG limpio) -->
             <div class="relative h-32 w-full flex justify-center items-end opacity-90 mt-6">
@@ -476,6 +556,15 @@
                 </svg>
             </div>
 
+            <div class="mt-6">
+                <div class="contact-item inline-block mx-4 text-lg">
+                    <i class="fas fa-phone text-yellow-300 mr-2"></i> 72576142
+                </div>
+                <div class="contact-item inline-block mx-4 text-lg">
+                    <i class="far fa-calendar-check text-yellow-300 mr-2"></i> Inscripciones hasta el 17 de diciembre
+                </div>
+            </div>
+
             <div class="text-lg italic text-yellow-300 mt-6 mx-auto max-w-xl border-t border-yellow-300/30 pt-4">
                 "Preparamos nuestros corazones para la venida del Salvador"
                 <div class="text-sm mt-2 text-gray-300">
@@ -488,6 +577,5 @@
     </div>
 
 </body>
-
 
 </html>
